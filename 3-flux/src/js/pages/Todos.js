@@ -31,17 +31,17 @@ export default class Featured extends React.Component {
     TodoActions.reloadTodos();
   }
 
+  handleChange(e) {
+     var text = e.target.value;
+     this.setState({
+       value: text
+     })
+   }
+
   createTodos() {
   var text = this.state.value;
    TodoActions.createTodo(text);
  }
-
- handleChange(e) {
-    var text = e.target.value;
-    this.setState({
-      value: text
-    })
-  }
 
   render() {
     const { todos } = this.state;
