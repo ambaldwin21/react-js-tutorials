@@ -31,6 +31,18 @@ export default class Featured extends React.Component {
     TodoActions.reloadTodos();
   }
 
+  createTodos() {
+  var text = this.state.value;
+   TodoActions.createTodo(text);
+ }
+
+ handleChange(e) {
+    var text = e.target.value;
+    this.setState({
+      value: text
+    })
+  }
+
   render() {
     const { todos } = this.state;
 
@@ -41,6 +53,8 @@ export default class Featured extends React.Component {
     return (
       <div>
         <button onClick={this.reloadTodos.bind(this)}>Reload!</button>
+        <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)}/>
+        <button type="button" onClick={this.createTodos.bind(this)}>Create!</button>
         <h1>Todos</h1>
         <ul>{TodoComponents}</ul>
       </div>
